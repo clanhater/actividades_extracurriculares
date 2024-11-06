@@ -1,0 +1,15 @@
+{% extends 'actividades/base.html' %} 
+{% block title %}Registrar Participantes{% endblock %}
+
+    {% block content %}
+        <h2>Registrar Participantes en {{ actividad.nombre }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <select name="usuarios" multiple>
+                {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Registrar</button>
+        </form>
+    {% endblock %}

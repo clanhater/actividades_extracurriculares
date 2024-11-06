@@ -1,0 +1,51 @@
+{% extends 'actividades/base.html' %}
+
+{% block title %}Perfil de Usuario{% endblock %}
+
+{% block content %}
+{% if user.is_staff %}
+    <h1>Perfil de Staff</h1>
+    <p>{{ user.get_full_name }}</p>
+    <p>{{ user.email }}</p>
+    <h2>Actividades por Tipo</h2>
+    {% for tipo, actividades in actividades_por_tipo.items %}
+        <h3>{{ tipo.nombre }}</h3>
+        <ul>
+        {% for actividad in actividades %}
+            <li>
+                {{ actividad.nombre }}
+                <a href="{% url 'actividad_update' actividad.id %}">Modificar</a>
+                <a href="{% url 'actividad_delete' actividad.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="{% url 'actividad_create' %}">Crear Nueva Actividad</a>
+{% else %}
+    <h1>Perfil de Usuario</h1>
+    <p>{{ user.get_full_name }}</p>
+    <p>{{ user.email }}</p>
+    <h2>Historial de Actividades</h2>
+    {% if actividades_participadas %}
+        <ul>
+        {% for actividad in actividades_participadas %}
+            <li>{{ actividad.nombre }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No has participado en ninguna actividad.</p>
+    {% endif %}
+    <h2>Próximas Actividades</h2>
+    {% if proximas_actividades %}
+        <ul>
+        {% for actividad in proximas_actividades %}
+            <li>{{ actividad.nombre }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tienes actividades próximas. ¡Anímate a participar en alguna!</p>
+    {% endif %}
+{% endif %}
+
+
+{% endblock %}

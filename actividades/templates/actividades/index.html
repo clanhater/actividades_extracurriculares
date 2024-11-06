@@ -1,0 +1,152 @@
+{% extends 'actividades/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="position-relative" style="max-height: 100vh; overflow: hidden;">
+    <div
+        class="text-center position-absolute top-50 start-50 translate-middle text-white"
+        style="z-index: 1; width: 100vw; height: 100vh; padding-top: 40vh;">
+        <h2>Bienvenido a Actividades Extracurriculares</h2>
+        <p>Explora nuestras actividades y participa en las que más te
+            interesen.</p>
+        <a href="{% url 'actividad_list' %}" class="btn btn-primary">Ver
+            Actividades</a>
+    </div>
+
+    <div id="actividadCarrusel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for i in num %}
+            <li data-target="#actividadCarrusel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first%} class="active" {% endif %}>
+            </li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner" style="max-height: 94vh;">
+            {% for i in num %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img
+                    src="{% static 'actividades/images/imagen' %}{{ i }}.jpg"
+                    class="d-block w-100" alt="{{ actividad.nombre }}"
+                    style="height: 94vh; width: 100%; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block"
+                    style="z-index: 0;">
+                    <!-- <h5>{{ actividad.nombre }}</h5>
+                    <p>{{ actividad.descripcion }}</p> -->
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <a class="carousel-control-prev" href="#actividadCarrusel" role="button"
+            data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#actividadCarrusel" role="button"
+            data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="separator-title">
+    <h2 class="text-center">Actividades Destacadas</h2>
+</div>
+
+<div class="separator"></div> 
+<div class="container section"> 
+    <div class="row mb-4 align-items-center"> 
+        <div class="col-md-8 animate-left">
+            <img src="{% static 'actividades/images/juegos_mella.jpg' %}"
+                class="img-fluid" alt="Juegos Mella">
+        </div> 
+        <div class="col-md-4 d-flex flex-column justify-content-center animate-right">
+            <div> 
+                <h3>Juegos Mella</h3> 
+                <p>Los Juegos Mella son una serie de competiciones deportivas que fomentan la camaradería y el espíritu deportivo entre los estudiantes. Este evento incluye actividades como atletismo, fútbol, baloncesto, y más.</p>  
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Explorar Actividad</a> 
+                <hr>
+                <p>
+                    <em>"La fuerza no viene de la capacidad corporal, sino de la voluntad del alma." - Ghandi</em>
+                </p> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="container section"> 
+    <div class="row mb-4 align-items-center"> 
+        <div class="col-md-8 animate-left order-md-2"> 
+            <img src="{% static 'actividades/images/festival_artistas_aficionados.jpg' %}" class="img-fluid" alt="Festival de Artistas Aficionados"> 
+        </div>
+        <div class="col-md-4 d-flex flex-column justify-content-center animate-right order-md-1">
+            <div> 
+                <h3>Festival de Artistas Aficionados</h3> 
+                <p>El Festival de Artistas Aficionados es un espacio para que los estudiantes demuestren sus talentos en áreas como la música, la danza, el teatro y las artes visuales. Es un evento lleno de creatividad e inspiración.</p> 
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Explorar Actividad</a> 
+                <hr>
+                <p>
+                    <em>"El arte no reproduce lo visible. Hace visible lo que no siempre lo es." - Paul Klee</em>
+                </p> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="container section"> 
+    <div class="row mb-4 align-items-center"> 
+        <div class="col-md-8 animate-left"> 
+            <img src="{% static 'actividades/images/guardia_estudiantil.jpg' %}" class="img-fluid" alt="Guardia Estudiantil"> 
+        </div> 
+        <div class="col-md-4 d-flex flex-column justify-content-center animate-right">
+            <div> 
+                <h3>Guardia Estudiantil</h3> 
+                <p>La Guardia Estudiantil es un programa que permite a los estudiantes participar en la seguridad del campus, promoviendo un ambiente seguro y colaborativo. Los estudiantes trabajan en equipo para mantener el orden y la seguridad.</p> 
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Explorar Actividad</a> 
+                <hr>
+                <p>
+                    <em>"La seguridad es la base sobre la cual se construye una comunidad próspera." - Anónimo</em>
+                </p> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="separator">
+    <div class="animated-separator"></div>
+</div> 
+<div class="container section"> 
+    <div class="row mb-4 align-items-center"> 
+        <div class="col-md-8 animate-left order-md-2"> 
+            <img src="{% static 'actividades/images/tsu.jpg' %}" class="img-fluid" alt="TSU"> 
+        </div> 
+        <div class="col-md-4 d-flex flex-column justify-content-center animate-right order-md-1">
+            <div> 
+                <h3>TSU</h3> 
+                <p>El TSU (Trabajo Social Universitario) es una actividad donde los estudiantes colaboran en proyectos comunitarios, desde la limpieza y embellecimiento del campus hasta la organización de eventos educativos y culturales.</p> 
+                <a href="{% url 'actividad_list' %}" class="btn btn-primary">Explorar Actividad</a> 
+                <hr>
+                <p>
+                    <em>"La verdadera educación consiste en obtener lo mejor de uno mismo." - Mahatma Gandhi</em>
+                </p> 
+            </div> 
+        </div> 
+    </div> 
+</div>
+<div class="separator"></div>
+{% endblock %}

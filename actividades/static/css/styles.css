@@ -1,0 +1,103 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: background-color 0.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: #333;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Separador */
+.separator {
+  height: 100px; /* Ajusta la altura del separador según sea necesario */
+}
+
+.animate-left {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s, transform 1s;
+}
+.animate-right {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 1s, transform 1s;
+}
+.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animated-separator {
+  height: 100px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  animation: gradient-move 5s ease infinite;
+}
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.separator-title {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  text-align: center;
+}
+.separator-title h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+
+  margin: 30px 0;
+}
+.section::before {
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+}
+
+.section::after {
+  bottom: -10px;
+  right: -10px;
+  width: 100%;
+  height: 100%;
+}

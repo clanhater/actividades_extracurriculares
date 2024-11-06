@@ -1,0 +1,11 @@
+{% extends 'actividades/base.html' %} 
+{% block title %}Informe Final{% endblock %}
+
+    {% block content %}
+    <h2>Informe Final de Resultados</h2>
+    <ul>
+        {% for resultado in resultados %}
+            <li>{{ resultado.facultad.nombre }}: {{ resultado.puntos }} puntos ({{ resultado.actividad.nombre }})</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}

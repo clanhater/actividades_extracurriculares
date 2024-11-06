@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand"
+                href="{% url 'index' %}">Extracurriculares</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'actividad_list' %}">Actividades</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav"> 
+                    {% if user.is_authenticated %} 
+                    <li class="nav-item"> 
+                        <a class="btn btn-outline-light" href="{% url 'logout' %}">Logout</a> 
+                    </li> 
+                    {% else %} 
+                    <li class="nav-item"> 
+                        <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a> 
+                    </li> 
+                    {% endif %} 
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+
+        <footer class="bg-dark text-white mt-4"> 
+            <div class="container py-4 bg-dark"> 
+                <div class="row"> 
+                    <div class="col-md-4"> 
+                        <h5>Acerca de Nosotros</h5> 
+                        <p>Esta página está diseñada para facilitar la colaboración comunitaria y la organización de actividades. Ofrecemos una plataforma para descubrir y participar en eventos educativos, culturales y de servicio social.</p> 
+                    </div> 
+                    <div class="col-md-4"> 
+                        <h5>Enlaces Útiles</h5> 
+                        <ul class="list-unstyled"> 
+                            <li>
+                                <a href="{% url 'index' %}" class="text-white">Inicio</a>
+                            </li> 
+                            <li>
+                                <a href="{% url 'actividad_list' %}" class="text-white">Actividades</a>
+                            </li> 
+                        </ul> 
+                    </div> 
+                    <div class="col-md-4"> 
+                        <h5>Contacto</h5> 
+                        <address> 
+                            <strong>Dirección:</strong> 
+                            Universidad de las Ciencias Informáticas, Edificio 97104
+                            <br> 
+                            <strong>Teléfono:</strong> 
+                            +53 51341261
+                            <br> 
+                            <strong>Email:</strong> 
+                            <a href="mailto:ernegonzalvar@gmail.com" class="text-white">ernegonzalvar@gmail.com</a> 
+                        </address> 
+                    </div> 
+                </div> 
+                <div class="row"> 
+                    <div class="col-12 text-center"> 
+                        <p>&copy; 2024 Actividades Extracurriculares. Todos los derechos reservados.</p> 
+                    </div> 
+                </div> 
+            </div> 
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script> 
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.querySelector('.navbar'); 
+            window.onscroll = function () { 
+                if (window.scrollY > 50) { 
+                    navbar.classList.add('scrolled'); 
+                } else { 
+                    navbar.classList.remove('scrolled'); 
+                } 
+            }; 
+        });
+        </script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'actividades/base.html' %} 
+{% block title %}Lista de Actividades{% endblock %}
+
+{% block content %}
+<form method="get">
+    <input type="text" name="nombre" placeholder="Buscar por nombre">
+    <button type="submit">Buscar</button>
+</form>
+
+<ul>
+    {% for actividad in object_list %}
+        <li>{{ actividad.nombre }} - {{ actividad.fecha_inicio }} a {{ actividad.fecha_fin }}</li>
+    {% endfor %}
+</ul>
+
+<div>
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

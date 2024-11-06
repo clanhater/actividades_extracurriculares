@@ -1,0 +1,22 @@
+{% extends 'actividades/base.html' %} 
+{% block title %}Eliminar Actividad{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eliminar Actividad</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        {% block content %}
+        <h2>¿Estás seguro de que deseas eliminar esta actividad?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
+        <a href="{% url 'actividad_list' %}">Cancelar</a>
+        {% endblock %}
+    </body>
+</html>
